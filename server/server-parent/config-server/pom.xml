@@ -119,9 +119,9 @@
 				<config-server.server-port>8888</config-server.server-port>
 				<config-server.application.index>production</config-server.application.index>
 				<config-server.active-profiles>default</config-server.active-profiles>
-				<config-server.git.uri>https://git-codecommit.us-east-1.amazonaws.com/v1/repos/rtalpha-git</config-server.git.uri>
-				<config-server.git.username>ricky.shi-at-462912602864</config-server.git.username>
-				<config-server.git.password>eR7Mf5GTqzqNv8hNxVWvLmcoXhzkKS/klB9r+/n8Seo=</config-server.git.password>
+				<config-server.git.uri></config-server.git.uri>
+				<config-server.git.username></config-server.git.username>
+				<config-server.git.password></config-server.git.password>
 				<config-server.git.basedir></config-server.git.basedir>
 				<config-server.log.directory>${project.build.directory}/log</config-server.log.directory>
 				<config-server.log.prefix>config-server</config-server.log.prefix>
