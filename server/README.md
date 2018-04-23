@@ -1,9 +1,12 @@
 ## **1. Overview**
 Originally server module is based on service-oriented architecture, I have been refactoring them to micro-service style since this March. For the time being, server module has the following services:
 
-1.1. Product Management System<br>
-1.2. User Management System (in the progress of refactoring)<br>
-1.3. Email Management System<br>
+1.1. Config Server<br>
+1.2. Service Registry<br>
+1.3. API Gateway<br>
+1.4. Product Management System<br>
+1.5. User Management System (in the progress of refactoring)<br>
+1.6. Email Management System<br> 
 
 New services such as Payment Management System, Order Management System, etc, will be added gradually. 
 
