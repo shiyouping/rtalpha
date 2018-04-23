@@ -1,0 +1,81 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<artifactId>base-parent</artifactId>
+	<packaging>pom</packaging>
+
+	<name>RT Alpha - Base Parent</name>
+	<url>http://www.rtalpha.com</url>
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.rtalpha</groupId>
+		<artifactId>rtalpha-parent</artifactId>
+		<version>0.3.2-SNAPSHOT</version>
+		<relativePath>../rtalpha-parent/pom.xml</relativePath>
+	</parent>
+
+	<modules>
+		<module>base-kernel</module>
+		<module>base-core</module>
+		<module>base-mongo</module>
+		<module>base-web</module>
+		<module>base-config</module>
+		<module>base-eureka</module>
+		<module>base-remote</module>
+		<module>base-email</module>
+		<module>base-jpa</module>
+	</modules>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>base-kernel</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>base-core</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>base-config</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>base-email</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>base-eureka</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>base-jpa</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>base-mongo</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>base-web</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+</project>

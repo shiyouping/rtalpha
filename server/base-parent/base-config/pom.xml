@@ -1,0 +1,44 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<artifactId>base-config</artifactId>
+
+	<name>RT Alpha - Base Config</name>
+	<url>http://www.rtalpha.com</url>
+	<modelVersion>4.0.0</modelVersion>
+	<description>Defines all the dependencies that a Config client needs to communicate with Config Server</description>
+
+	<parent>
+		<groupId>com.rtalpha</groupId>
+		<artifactId>base-parent</artifactId>
+		<version>0.3.2-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<!-- Get application configurations from Config Server at startup -->
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-config</artifactId>
+		</dependency>
+
+		<dependency>
+			<!-- To support retry configuration retrieval when Config Server fails -->
+			<groupId>org.springframework.retry</groupId>
+			<artifactId>spring-retry</artifactId>
+		</dependency>
+
+		<dependency>
+			<!-- To support retry configuration retrieval when Config Server fails -->
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+
+		<dependency>
+			<!-- Listen to config server for configuration changes -->
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-bus-amqp</artifactId>
+		</dependency>
+	</dependencies>
+</project>

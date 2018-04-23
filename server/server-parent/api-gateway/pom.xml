@@ -1,0 +1,63 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<artifactId>api-gateway</artifactId>
+	<name>RT Alpha - API Gateway</name>
+	<url>http://www.rtalpha.com</url>
+	<modelVersion>4.0.0</modelVersion>
+	<description>An abstraction layer that sits on the execution path of every request from external clients and consolidates the path to all of a system’s commonly used features</description>
+
+	<parent>
+		<groupId>com.rtalpha</groupId>
+		<artifactId>server-parent</artifactId>
+		<version>0.3.2-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>base-eureka</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-zuul</artifactId>
+		</dependency>
+
+		<dependency>
+			<!-- Include this to use Logback -->
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-logging</artifactId>
+		</dependency>
+	</dependencies>
+
+	<profiles>
+		<profile>
+			<id>development</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<api-gateway.port>8011</api-gateway.port>
+				<api-gateway.application.index>development</api-gateway.application.index>
+				<config-server.uri>http://localhost:8001</config-server.uri>
+				<config.fail-fast>false</config.fail-fast>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>production</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<api-gateway.port>8011</api-gateway.port>
+				<api-gateway.application.index>production</api-gateway.application.index>
+				<config-server.uri>http://localhost:8001</config-server.uri>
+				<config.fail-fast>true</config.fail-fast>
+			</properties>
+		</profile>
+	</profiles>
+</project>

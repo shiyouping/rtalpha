@@ -1,0 +1,20 @@
+<!DOCTYPE configuration>
+<configuration>
+    <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.mysema" level="INFO"/>
+    <logger name="org.infinispan" level="INFO"/>
+    <logger name="org.jgroups" level="INFO"/>
+    <logger name="org.hibernate" level="INFO"/>
+    <logger name="org.hibernate.SQL" level="INFO"/>
+    <logger name="org.springframework" level="INFO"/>
+
+    <root level="DEBUG">
+        <appender-ref ref="Console"/>
+    </root>
+
+</configuration>

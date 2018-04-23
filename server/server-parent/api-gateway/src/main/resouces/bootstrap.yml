@@ -1,0 +1,12 @@
+server:
+  port: @api-gateway.port@
+  
+spring:
+  application:
+    name: api-gateway
+    index: @api-gateway.application.index@
+    
+  cloud:
+    config:
+      uri: @config-server.uri@
+      failFast: @config.fail-fast@

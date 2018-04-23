@@ -1,0 +1,178 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<artifactId>config-server</artifactId>
+	<name>RT Alpha - Config Server</name>
+	<url>http://www.rtalpha.com</url>
+	<modelVersion>4.0.0</modelVersion>
+	<description>Centralizes client configurations and publish configuration changes to clients</description>
+
+	<parent>
+		<groupId>com.rtalpha</groupId>
+		<artifactId>server-parent</artifactId>
+		<version>0.3.2-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-config-server</artifactId>
+		</dependency>
+
+		<dependency>
+			<!-- Enable a "/monitor" endpoint -->
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-config-monitor</artifactId>
+		</dependency>
+
+		<dependency>
+			<!-- Broadcast configuration changes to config clients -->
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-bus-amqp</artifactId>
+		</dependency>
+
+		<dependency>
+			<!-- Include this to use Logback -->
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-logging</artifactId>
+		</dependency>
+	</dependencies>
+
+	<profiles>
+		<profile>
+			<id>development</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<!-- Config Server related properties -->
+				<config-server.server-port>8001</config-server.server-port>
+				<config-server.application.index>development</config-server.application.index>
+				<config-server.active-profiles>native</config-server.active-profiles>
+				<config-server.git.uri></config-server.git.uri>
+				<config-server.git.username></config-server.git.username>
+				<config-server.git.password></config-server.git.password>
+				<config-server.git.basedir></config-server.git.basedir>
+				<config-server.log.directory>${project.build.directory}/log</config-server.log.directory>
+				<config-server.log.prefix>config-server</config-server.log.prefix>
+				<config-server.log.history>7</config-server.log.history>
+
+				<!-- Common configuration for all clients -->
+				<rabbitmq.host>localhost</rabbitmq.host>
+				<rabbitmq.port>5672</rabbitmq.port>
+				<rabbitmq.username>guest</rabbitmq.username>
+				<rabbitmq.password>guest</rabbitmq.password>
+				<config-server.uri>http://localhost:8001</config-server.uri>
+				<config-server-label>master</config-server-label>
+				<service-registry.host>localhost</service-registry.host>
+				<service-registry.port>8011</service-registry.port>
+
+				<!-- Service Registry related properties -->
+				<service-registry.log.directory>D:\\Development\\alpha\\workspaces\\rtalpha\\server-parent\\service-registry\\target\\log</service-registry.log.directory>
+				<service-registry.log.prefix>config-server</service-registry.log.prefix>
+				<service-registry.log.history>7</service-registry.log.history>
+
+				<!-- PMS Application related properties -->
+				<pms-app.log.directory>D:\\Development\\alpha\\workspaces\\rtalpha\\pms-parent\\pms-app\\target\\log</pms-app.log.directory>
+				<pms-app.log.prefix>pms-app</pms-app.log.prefix>
+				<pms-app.log.history>7</pms-app.log.history>
+				<pms-app.http.multipart.location>D:\\Development\\alpha\\workspaces\\rtalpha\\pms-parent\\pms-app\\target\\multipart</pms-app.http.multipart.location>
+				<pms-app.http.multipart.base-location>D:\\Development\\alpha\\workspaces\\rtalpha\\pms-parent\\pms-app\\target\\multipart\\base</pms-app.http.multipart.base-location>
+				<pms-app.profiles.active>default,development</pms-app.profiles.active>
+				<pms-app.mongodb.host>localhost</pms-app.mongodb.host>
+				<pms-app.mongodb.port>27017</pms-app.mongodb.port>
+				<pms-app.mongodb.database>rtalpha</pms-app.mongodb.database>
+				<pms-app.mongodb.username>root</pms-app.mongodb.username>
+				<pms-app.mongodb.password>P@ssw0rd</pms-app.mongodb.password>
+				<pms-app.mongodb.authentication-database>admin</pms-app.mongodb.authentication-database>
+				<pms-app.tomcat.basedir>D:\\Development\\alpha\\workspaces\\rtalpha\\pms-parent\\pms-app\\target\\tomcat</pms-app.tomcat.basedir>
+
+				<!-- EMS Application related properties -->
+				<ems-app.log.directory>D:\\Development\\alpha\\workspaces\\rtalpha\\ems-parent\\ems-app\\target\\log</ems-app.log.directory>
+				<ems-app.log.prefix>ems-app</ems-app.log.prefix>
+				<ems-app.log.history>7</ems-app.log.history>
+				<ems-app.profiles.active>default,development</ems-app.profiles.active>
+				<ems-app.mongodb.host>localhost</ems-app.mongodb.host>
+				<ems-app.mongodb.port>27017</ems-app.mongodb.port>
+				<ems-app.mongodb.database>rtalpha</ems-app.mongodb.database>
+				<ems-app.mongodb.username>root</ems-app.mongodb.username>
+				<ems-app.mongodb.password>P@ssw0rd</ems-app.mongodb.password>
+				<ems-app.mongodb.authentication-database>admin</ems-app.mongodb.authentication-database>
+				<ems-app.thymeleaf.cache>false</ems-app.thymeleaf.cache>
+				<ems-app.mail.host>smtp.gmail.com</ems-app.mail.host>
+				<ems-app.mail.port>465</ems-app.mail.port>
+				<ems-app.mail.username>rtalpha.test@gmail.com</ems-app.mail.username>
+				<ems-app.mail.password>P@ssw0rd@rtalpha</ems-app.mail.password>
+				<ems-app.tomcat.basedir>D:\\Development\\alpha\\workspaces\\rtalpha\\ems-parent\\ems-app\\target\\tomcat</ems-app.tomcat.basedir>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>production</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<!-- Config Server related properties -->
+				<config-server.server-port>8888</config-server.server-port>
+				<config-server.application.index>production</config-server.application.index>
+				<config-server.active-profiles>default</config-server.active-profiles>
+				<config-server.git.uri>https://git-codecommit.us-east-1.amazonaws.com/v1/repos/rtalpha-git</config-server.git.uri>
+				<config-server.git.username>ricky.shi-at-462912602864</config-server.git.username>
+				<config-server.git.password>eR7Mf5GTqzqNv8hNxVWvLmcoXhzkKS/klB9r+/n8Seo=</config-server.git.password>
+				<config-server.git.basedir></config-server.git.basedir>
+				<config-server.log.directory>${project.build.directory}/log</config-server.log.directory>
+				<config-server.log.prefix>config-server</config-server.log.prefix>
+				<config-server.log.history>7</config-server.log.history>
+
+				<!-- Common configuration for all clients -->
+				<rabbitmq.host>localhost</rabbitmq.host>
+				<rabbitmq.port>5672</rabbitmq.port>
+				<rabbitmq.username>guest</rabbitmq.username>
+				<rabbitmq.password>guest</rabbitmq.password>
+				<service-registry.host>localhost</service-registry.host>
+				<service-registry.port>8011</service-registry.port>
+
+				<!-- Service Registry related properties -->
+				<service-registry.log.directory></service-registry.log.directory>
+				<service-registry.log.prefix>config-server</service-registry.log.prefix>
+				<service-registry.log.history>7</service-registry.log.history>
+
+				<!-- PMS Application related properties -->
+				<pms-app.log.directory></pms-app.log.directory>
+				<pms-app.log.prefix></pms-app.log.prefix>
+				<pms-app.log.history></pms-app.log.history>
+				<pms-app.http.multipart.location></pms-app.http.multipart.location>
+				<pms-app.http.multipart.base-location></pms-app.http.multipart.base-location>
+				<pms-app.profiles.active>default,production</pms-app.profiles.active>
+				<pms-app.mongodb.host></pms-app.mongodb.host>
+				<pms-app.mongodb.port></pms-app.mongodb.port>
+				<pms-app.mongodb.database></pms-app.mongodb.database>
+				<pms-app.mongodb.username></pms-app.mongodb.username>
+				<pms-app.mongodb.password></pms-app.mongodb.password>
+				<pms-app.mongodb.authentication-database></pms-app.mongodb.authentication-database>
+				<pms-app.tomcat.basedir></pms-app.tomcat.basedir>
+
+				<!-- EMS Application related properties -->
+				<ems-app.log.directory></ems-app.log.directory>
+				<ems-app.log.prefix>ems-app</ems-app.log.prefix>
+				<ems-app.log.history>7</ems-app.log.history>
+				<ems-app.profiles.active>default,production</ems-app.profiles.active>
+				<ems-app.mongodb.host></ems-app.mongodb.host>
+				<ems-app.mongodb.port></ems-app.mongodb.port>
+				<ems-app.mongodb.database></ems-app.mongodb.database>
+				<ems-app.mongodb.username></ems-app.mongodb.username>
+				<ems-app.mongodb.password></ems-app.mongodb.password>
+				<ems-app.mongodb.authentication-database></ems-app.mongodb.authentication-database>
+				<ems-app.thymeleaf.cache>true</ems-app.thymeleaf.cache>
+				<ems-app.mail.host></ems-app.mail.host>
+				<ems-app.mail.port></ems-app.mail.port>
+				<ems-app.mail.username></ems-app.mail.username>
+				<ems-app.mail.password></ems-app.mail.password>
+				<ems-app.tomcat.basedir></ems-app.tomcat.basedir>
+			</properties>
+		</profile>
+	</profiles>
+</project>

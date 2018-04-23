@@ -1,0 +1,136 @@
+# ----------------------------------------
+# Non-Spring-Handled Properties
+# ----------------------------------------
+base-web:
+  http:
+    task-executor:
+      core-pool-size: 50
+      max-pool-size: 200
+      queue-capacity: 500
+
+ems-app:
+  user-verification:
+    code-length: 6
+    code-lifespan-in-minute: 10
+    email-subject: verification code
+    template: user-verification
+
+# ----------------------------------------
+# Spring-Handled Properties
+#
+# Check the following link to see detailed explanation
+# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+# ----------------------------------------
+
+# APPLICATION SETTINGS (SpringApplication)
+spring:
+  main:
+    banner-mode: log
+    
+  # Spring Profiles
+  profiles:
+    active: test
+    
+  cloud:
+    #Disable discovery
+    discovery:
+      enabled: false
+
+    #Disable cloud config and config discovery
+    config:
+      enabled: false    
+      discovery:
+        enabled: false
+
+  # SPRING CACHE (CacheProperties)
+  cache:
+    type: infinispan
+    cache-names: verificationCode
+    infinispan:
+      config: classpath:/infinispan-test.xml
+
+  # SPRING MVC (WebMvcProperties)
+  mvc:
+    throw-exception-if-no-handler-found: true
+    async:
+      request-timeout: 300000
+      
+  # HTTP encoding (HttpEncodingProperties)
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+  # SPRING RESOURCES HANDLING (ResourceProperties)
+  resources:
+    add-mappings: false
+    
+  # SPRING SESSION (SessionProperties)
+  session:
+    store-type: mongo
+
+  # EMBEDDED MONGODB (EmbeddedMongoProperties)
+  mongodb:
+    embedded:
+      storage:
+        database-dir: @project.build.directory@/mongo
+
+  # THYMELEAF (ThymeleafAutoConfiguration)
+  thymeleaf:
+    cache: false
+    check-template: true
+    check-template-location: true
+    content-type: text/html
+    enabled: false
+    encoding: UTF-8
+    mode: HTML
+    prefix: classpath:/template/
+    suffix: .html
+
+  # EMAIL (MailProperties)
+  mail:
+    protocol: smtp
+    host: localhost
+    port: 3465
+    username: test@gmail.com
+    password: password
+
+  # JACKSON (JacksonProperties)
+  jackson:
+    joda-date-time-format: yyyy-MM-dd'T'HH:mm:ss.SSSZ
+
+    # JSON Serialization (SerializationFeature)
+    # SEE http://docs.spring.io/spring-boot/docs/current/reference/html/howto-spring-mvc.html#howto-customize-the-jackson-objectmapper
+    serialization:
+      WRITE_ENUMS_USING_TO_STRING: true
+      WRITE_DATES_AS_TIMESTAMPS: false
+
+    # JSON Deserialization (DeserializationFeature)
+    # SEE http://docs.spring.io/spring-boot/docs/current/reference/html/howto-spring-mvc.html#howto-customize-the-jackson-objectmapper
+    deserialization:
+      READ_ENUMS_USING_TO_STRING: true
+
+# EMBEDDED SERVER CONFIGURATION (ServerProperties)
+server:
+  port: 9090
+  connection-timeout: 30000
+  session:
+    timeout: 30
+  tomcat:
+    basedir: @project.build.directory@/tomcat
+    accesslog:
+      directory: log
+      enabled: true
+
+# SECURITY (SecurityProperties)
+security:
+  enable-csrf: false
+  sessions: if_required
+  basic:
+    enabled: true
+    
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false

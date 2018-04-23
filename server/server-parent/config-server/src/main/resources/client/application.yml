@@ -1,0 +1,39 @@
+# Common configuration for all config clients
+spring:
+  main:
+    banner-mode: log
+    
+  rabbitmq:
+    host: @rabbitmq.host@
+    port: @rabbitmq.port@
+    username: @rabbitmq.username@
+    password: @rabbitmq.password@
+    
+  # JACKSON (JacksonProperties)
+  jackson:
+    joda-date-time-format: yyyy-MM-dd'T'HH:mm:ss.SSSZ
+
+    # JSON Serialization (SerializationFeature)
+    # SEE http://docs.spring.io/spring-boot/docs/current/reference/html/howto-spring-mvc.html#howto-customize-the-jackson-objectmapper
+    serialization:
+      WRITE_ENUMS_USING_TO_STRING: true
+      WRITE_DATES_AS_TIMESTAMPS: false
+
+    # JSON Deserialization (DeserializationFeature)
+    # SEE http://docs.spring.io/spring-boot/docs/current/reference/html/howto-spring-mvc.html#howto-customize-the-jackson-objectmapper
+    deserialization:
+      READ_ENUMS_USING_TO_STRING: true
+
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+    serviceUrl:
+      defaultZone: http://@service-registry.host@:@service-registry.port@/eureka/
+
+# Specify spring.application.name of all services for feign clients
+# Check specific bootstrap.yml in different services
+service-name:
+  pms: pms-app
+  ums: ums-app
+  ems: ems-app

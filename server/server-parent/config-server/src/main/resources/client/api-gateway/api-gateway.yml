@@ -1,0 +1,14 @@
+logging:
+  config: @config-server.uri@/api-gateway/default/@config-server-label@/api-gateway-logback.xml
+
+zuul:
+  routes:
+    pms:
+      path: /pms/**
+      service-id: pms-app
+    ums:
+      path: /ums/**
+      service-id: ums-app
+    ems:
+      path: /ems/**
+      service-id: ems-app

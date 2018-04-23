@@ -1,0 +1,64 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<artifactId>service-registry</artifactId>
+	<name>RT Alpha - Service Registry</name>
+	<url>http://www.rtalpha.com</url>
+	<modelVersion>4.0.0</modelVersion>
+	<description>Service registration and discovery for locating services for the purpose of load balancing and failover of middle-tier servers</description>
+
+	<parent>
+		<groupId>com.rtalpha</groupId>
+		<artifactId>server-parent</artifactId>
+		<version>0.3.2-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>base-config</artifactId>
+		</dependency>
+
+		<!-- Spring related dependencies -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+		</dependency>
+
+		<dependency>
+			<!-- Include this to use Logback -->
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-logging</artifactId>
+		</dependency>
+	</dependencies>
+
+	<profiles>
+		<profile>
+			<id>development</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<service-registry.port>8011</service-registry.port>
+				<service-registry.application.index>development</service-registry.application.index>
+				<config-server.uri>http://localhost:8001</config-server.uri>
+				<config.fail-fast>false</config.fail-fast>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>production</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<service-registry.port>8011</service-registry.port>
+				<service-registry.application.index>production</service-registry.application.index>
+				<config-server.uri>http://localhost:8001</config-server.uri>
+				<config.fail-fast>true</config.fail-fast>
+			</properties>
+		</profile>
+	</profiles>
+</project>

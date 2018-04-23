@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<infinispan xmlns="urn:infinispan:config:7.2">
+
+	<cache-container default-cache="ricky-cache">
+		<transport />
+		<jmx duplicate-domains="true" />
+		<replicated-cache name="ricky-cache" mode="SYNC" />
+	</cache-container>
+
+</infinispan>

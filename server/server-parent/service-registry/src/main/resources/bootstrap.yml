@@ -1,0 +1,12 @@
+server:
+  port: @service-registry.port@
+  
+spring:
+  application:
+    name: service-registry
+    index: @service-registry.application.index@
+    
+  cloud:
+    config:
+      uri: @config-server.uri@
+      failFast: @config.fail-fast@

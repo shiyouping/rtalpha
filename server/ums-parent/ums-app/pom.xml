@@ -1,0 +1,95 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<artifactId>ums-app</artifactId>
+	<name>RT Alpha - User Management System Application</name>
+	<url>http://www.rtalpha.com</url>
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.rtalpha</groupId>
+		<artifactId>ums-parent</artifactId>
+		<version>0.2.3-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+
+	<properties>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.rtalpha</groupId>
+			<artifactId>ums-core</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>local</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<log.directory>${project.build.directory}/log</log.directory>
+				<server.secure-port>9090</server.secure-port>
+				<server.insecure-port>9091</server.insecure-port>
+				<web-service.username>system</web-service.username>
+				<web-service.password>password</web-service.password>
+				<web-service.root-url.ums>https://localhost:9090/rtalpha-ums</web-service.root-url.ums>
+				<spring.profiles.active>standard</spring.profiles.active>
+				<mongodb.host>localhost</mongodb.host>
+				<mongodb.port>27017</mongodb.port>
+				<mongodb.database>local</mongodb.database>
+				<mongodb.username>root</mongodb.username>
+				<mongodb.password>P@ssw0rd</mongodb.password>
+				<mongodb.authentication-database>admin</mongodb.authentication-database>
+				<tomcat.basedir>${project.build.directory}/tomcat</tomcat.basedir>
+				<thymeleaf.cache>false</thymeleaf.cache>
+				<mail.host>smtp.gmail.com</mail.host>
+				<mail.port>465</mail.port>
+				<mail.username>rtalpha.test@gmail.com</mail.username>
+				<mail.password>P@ssw0rd@rtalpha</mail.password>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>standard</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<log.directory>${project.build.directory}/log</log.directory>
+				<server.secure-port>9090</server.secure-port>
+				<server.insecure-port>9091</server.insecure-port>
+				<web-service.username>system</web-service.username>
+				<web-service.password>P@55w0rd</web-service.password>
+				<web-service.root-url.ums>https://localhost:9090/rtalpha-ums</web-service.root-url.ums>
+				<spring.profiles.active>standard</spring.profiles.active>
+				<mongodb.host>localhost</mongodb.host>
+				<mongodb.port>27017</mongodb.port>
+				<mongodb.database>local</mongodb.database>
+				<mongodb.username>root</mongodb.username>
+				<mongodb.password>P@ssw0rd</mongodb.password>
+				<mongodb.authentication-database>admin</mongodb.authentication-database>
+				<tomcat.basedir>${project.build.directory}/tomcat</tomcat.basedir>
+				<thymeleaf.cache>true</thymeleaf.cache>
+				<mail.host>smtp.gmail.com</mail.host>
+				<mail.port>465</mail.port>
+				<mail.username>rtalpha.test@gmail.com</mail.username>
+				<mail.password>P@ssw0rd@rtalpha</mail.password>
+			</properties>
+		</profile>
+	</profiles>
+</project>

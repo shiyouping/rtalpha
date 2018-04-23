@@ -1,0 +1,30 @@
+<!DOCTYPE configuration>
+<configuration scan="true">
+	<appender name="File"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>@config-server.log.directory@/@config-server.log.prefix@.log</file>
+		<append>true</append>
+		<encoder>
+			<charset>utf-8</charset>
+			<pattern>%d{HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>@config-server.log.directory@/@config-server.log.prefix@-%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>@config-server.log.history@</maxHistory>
+		</rollingPolicy>
+	</appender>
+
+	<appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>%d{HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="org.springframework" level="INFO" />
+
+	<root level="INFO">
+		<appender-ref ref="File" />
+		<appender-ref ref="Console" />
+	</root>
+
+</configuration>

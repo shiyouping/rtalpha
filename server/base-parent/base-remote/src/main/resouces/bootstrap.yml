@@ -1,0 +1,8 @@
+feign:
+  hystrix:
+    enabled: true
+    
+spring:
+  cloud:
+    config:
+      uri: @config-server.uri@

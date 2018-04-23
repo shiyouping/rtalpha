@@ -1,0 +1,314 @@
+package com.rtalpha.pms.app.document;
+
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.Map;
+
+import org.joda.time.DateTime;
+import org.pojomatic.annotations.AutoProperty;
+import org.springframework.data.annotation.Transient;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.index.TextIndexed;
+
+import com.rtalpha.base.mongo.document.BaseDocument;
+import com.rtalpha.base.mongo.document.ImpermanentDocument;
+
+/**
+ * @author Ricky
+ * @since May 17, 2017
+ */
+@AutoProperty
+public abstract class Product extends ImpermanentDocument {
+
+	@Transient
+	private static final long serialVersionUID = 1L;
+	@Indexed(unique = true)
+	private Long number;
+	@TextIndexed(weight = 6)
+	private String subject;
+	@TextIndexed(weight = 2)
+	private String summary;
+	@TextIndexed(weight = 2)
+	private List<String> keywords;
+	private String agent;
+	private Integer quantity;
+	private List<Price> basicPrices;
+	private List<Price> extraServices;
+	private List<Discount> discounts;
+	private Integer numberOfDeal;
+	private List<String> previews;
+	private Map<String, String> details;
+
+	public Long getNumber() {
+		return number;
+	}
+
+	public void setNumber(Long number) {
+		this.number = number;
+	}
+
+	public String getSubject() {
+		return subject;
+	}
+
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+
+	public String getSummary() {
+		return summary;
+	}
+
+	public void setSummary(String summary) {
+		this.summary = summary;
+	}
+
+	public List<String> getKeywords() {
+		return keywords;
+	}
+
+	public void setKeywords(List<String> keywords) {
+		this.keywords = keywords;
+	}
+
+	public String getAgent() {
+		return agent;
+	}
+
+	public void setAgent(String agent) {
+		this.agent = agent;
+	}
+
+	public Integer getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
+
+	public List<Price> getBasicPrices() {
+		return basicPrices;
+	}
+
+	public void setBasicPrices(List<Price> basicPrices) {
+		this.basicPrices = basicPrices;
+	}
+
+	public List<Price> getExtraServices() {
+		return extraServices;
+	}
+
+	public void setExtraServices(List<Price> extraServices) {
+		this.extraServices = extraServices;
+	}
+
+	public List<Discount> getDiscounts() {
+		return discounts;
+	}
+
+	public void setDiscounts(List<Discount> discounts) {
+		this.discounts = discounts;
+	}
+
+	public Integer getNumberOfDeal() {
+		return numberOfDeal;
+	}
+
+	public void setNumberOfDeal(Integer numberOfDeal) {
+		this.numberOfDeal = numberOfDeal;
+	}
+
+	public List<String> getPreviews() {
+		return previews;
+	}
+
+	public void setPreviews(List<String> previews) {
+		this.previews = previews;
+	}
+
+	public Map<String, String> getDetails() {
+		return details;
+	}
+
+	public void setDetails(Map<String, String> details) {
+		this.details = details;
+	}
+
+	@AutoProperty
+	public static abstract class Rating extends BaseDocument {
+		private static final long serialVersionUID = 1L;
+		private Float price;
+		private Float service;
+		private Float description;
+
+		public Float getPrice() {
+			return price;
+		}
+
+		public void setPrice(Float price) {
+			this.price = price;
+		}
+
+		public Float getService() {
+			return service;
+		}
+
+		public void setService(Float service) {
+			this.service = service;
+		}
+
+		public Float getDescription() {
+			return description;
+		}
+
+		public void setDescription(Float description) {
+			this.description = description;
+		}
+	}
+
+	@AutoProperty
+	public static class Price extends BaseDocument {
+		private static final long serialVersionUID = 1L;
+		private String name;
+		private String description;
+		private BigDecimal amount;
+		private BigDecimal tax;
+
+		public String getName() {
+			return name;
+		}
+
+		public void setName(String name) {
+			this.name = name;
+		}
+
+		public String getDescription() {
+			return description;
+		}
+
+		public void setDescription(String description) {
+			this.description = description;
+		}
+
+		public BigDecimal getAmount() {
+			return amount;
+		}
+
+		public void setAmount(BigDecimal amount) {
+			this.amount = amount;
+		}
+
+		public BigDecimal getTax() {
+			return tax;
+		}
+
+		public void setTax(BigDecimal tax) {
+			this.tax = tax;
+		}
+	}
+
+	@AutoProperty
+	public static class Discount extends BaseDocument {
+		private static final long serialVersionUID = 1L;
+		private Type type;
+		private String name;
+		private String description;
+		private BigDecimal amount;
+		private Threshold threshold;
+
+		public Type getType() {
+			return type;
+		}
+
+		public void setType(Type type) {
+			this.type = type;
+		}
+
+		public String getName() {
+			return name;
+		}
+
+		public void setName(String name) {
+			this.name = name;
+		}
+
+		public String getDescription() {
+			return description;
+		}
+
+		public void setDescription(String description) {
+			this.description = description;
+		}
+
+		public BigDecimal getAmount() {
+			return amount;
+		}
+
+		public void setAmount(BigDecimal amount) {
+			this.amount = amount;
+		}
+
+		public Threshold getThreshold() {
+			return threshold;
+		}
+
+		public void setThreshold(Threshold threshold) {
+			this.threshold = threshold;
+		}
+
+		public static enum Type {
+			NUMBER, PERCENTAGE;
+		}
+
+		@AutoProperty
+		public static class Threshold extends BaseDocument {
+			private static final long serialVersionUID = 1L;
+			private Integer age;
+			private Integer quantity;
+			private BigDecimal amount;
+			private DateTime effectiveTime;
+			private DateTime expiryTime;
+
+			public Integer getAge() {
+				return age;
+			}
+
+			public void setAge(Integer age) {
+				this.age = age;
+			}
+
+			public Integer getQuantity() {
+				return quantity;
+			}
+
+			public void setQuantity(Integer quantity) {
+				this.quantity = quantity;
+			}
+
+			public BigDecimal getAmount() {
+				return amount;
+			}
+
+			public void setAmount(BigDecimal amount) {
+				this.amount = amount;
+			}
+
+			public DateTime getEffectiveTime() {
+				return effectiveTime;
+			}
+
+			public void setEffectiveTime(DateTime effectiveTime) {
+				this.effectiveTime = effectiveTime;
+			}
+
+			public DateTime getExpiryTime() {
+				return expiryTime;
+			}
+
+			public void setExpiryTime(DateTime expiryTime) {
+				this.expiryTime = expiryTime;
+			}
+		}
+	}
+}

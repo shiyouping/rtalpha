@@ -1,0 +1,31 @@
+# Configuration for Config Server itself
+server:
+  port: @config-server.server-port@  
+
+spring:
+  application:
+    # IDENTITY (ContextIdApplicationContextInitializer)
+    name: config-server
+    index: @config-server.application.index@
+
+  profiles:
+    active: @config-server.active-profiles@
+
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/client,classpath:/client/ems-app,classpath:/client/pms-app,classpath:/client/service-registry,classpath:/client/ums-app
+        git:
+          uri: @config-server.git.uri@
+          username: @config-server.git.username@
+          password: @config-server.git.password@
+          basedir: @config-server.git.basedir@
+          search-paths: pms-app,ems-app,ums-app,service-registry
+          clone-on-start: true
+
+  rabbitmq:
+    host: @rabbitmq.host@
+    port: @rabbitmq.port@
+    username: @rabbitmq.username@
+    password: @rabbitmq.password@

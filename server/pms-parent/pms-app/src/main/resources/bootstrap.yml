@@ -1,0 +1,12 @@
+server:
+  port: @pms-app.server.port@
+
+spring:
+  application:
+    name: pms-app
+    index: @pms-app.application.index@
+    
+  cloud:
+    config:
+      uri: @config-server.uri@
+      failFast: @config.fail-fast@

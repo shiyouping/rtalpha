@@ -1,0 +1,42 @@
+# ----------------------------------------
+# Spring-Handled Properties
+#
+# Check the following link to see detailed explanation
+# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+# ----------------------------------------
+
+# APPLICATION SETTINGS (SpringApplication)
+spring:
+  main:
+    banner-mode: log
+
+# Spring Profiles
+  profiles:
+    active: test
+
+# SPRING CACHE (CacheProperties)
+  cache:
+    type: infinispan
+    cache-names: default
+    infinispan:
+      config: classpath:infinispan-test.xml
+
+# THYMELEAF (ThymeleafAutoConfiguration)
+  thymeleaf:
+    cache: false
+    check-template: true
+    check-template-location: true
+    content-type: text/html
+    enabled: false
+    encoding: UTF-8
+    mode: HTML
+    prefix: classpath:/templates/
+    suffix: .html
+
+# EMAIL (MailProperties)
+  mail:
+    protocol: smtp
+    host: localhost
+    port: 3465
+    username: test@gmail.com
+    password: password

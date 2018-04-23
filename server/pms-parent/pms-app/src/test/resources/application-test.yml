@@ -1,0 +1,116 @@
+# ----------------------------------------
+# Non-Spring-Handled Properties
+# ----------------------------------------
+base-web:
+  http:
+    task-executor:
+      core-pool-size: 50
+      max-pool-size: 200
+      queue-capacity: 500
+    multipart: base-location=@project.build.directory@/multipart/base
+
+# ----------------------------------------
+# Spring-Handled Properties
+#
+# Check the following link to see detailed explanation
+# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+# ----------------------------------------
+
+# APPLICATION SETTINGS (SpringApplication)
+spring:
+  main:
+    banner-mode: log
+    
+  cloud:
+    #Disable discovery
+    discovery:
+      enabled: false
+
+    #Disable cloud config and config discovery
+    config:
+      enabled: false    
+      discovery:
+        enabled: false
+    
+
+  # SPRING CACHE (CacheProperties)
+  cache:
+    type: infinispan
+    cache-names: product
+    infinispan:
+      config: classpath:infinispan-test.xml
+
+  # SPRING MVC (WebMvcProperties)
+  mvc:
+    throw-exception-if-no-handler-found: true
+    async:
+      request-timeout: 300000
+
+  # HTTP encoding (HttpEncodingProperties)
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+    # MULTIPART (MultipartProperties)
+    multipart:
+      enabled: true
+      file-size-threshold: 5MB
+      location: @project.build.directory@/multipart
+      max-file-size: 500KB
+      max-request-size: 5MB
+
+  # SPRING RESOURCES HANDLING (ResourceProperties)
+  resources:
+    add-mappings: false
+
+  # SPRING SESSION (SessionProperties)
+  session:
+    store-type: mongo
+
+  # EMBEDDED MONGODB (EmbeddedMongoProperties)
+  mongodb:
+    embedded:
+      storage:
+        database-dir: @project.build.directory@/mongo
+
+# EMBEDDED SERVER CONFIGURATION (ServerProperties)
+server:
+  tomcat:
+    basedir: @project.build.directory@/tomcat
+    accesslog:
+      directory: log
+      enabled: true
+  port: 8080
+  context-path: /pms
+
+# SECURITY (SecurityProperties)
+security:
+  sessions: if_required
+  ignored: /api/pms/v1/product/findOne,/api/pms/v1/product/findPage,/api/pms/v1/product/findAll
+  enable-csrf: false
+  basic:
+    authorize-mode: role
+    enabled: true
+    path: /api/pms/v1/**
+  user:
+    role: AGENT
+
+# JACKSON (JacksonProperties)
+  jackson:
+    joda-date-time-format: yyyy-MM-dd'T'HH:mm:ss.SSSZ
+    # JSON Serialization (SerializationFeature)
+    # SEE http://docs.spring.io/spring-boot/docs/current/reference/html/howto-spring-mvc.html#howto-customize-the-jackson-objectmapper
+    serialization:
+      WRITE_ENUMS_USING_TO_STRING: true
+      WRITE_DATES_AS_TIMESTAMPS: false
+    # JSON Deserialization (DeserializationFeature)
+    # SEE http://docs.spring.io/spring-boot/docs/current/reference/html/howto-spring-mvc.html#howto-customize-the-jackson-objectmapper
+    deserialization:
+      READ_ENUMS_USING_TO_STRING: true
+
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false

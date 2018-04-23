@@ -1,0 +1,53 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<artifactId>server-parent</artifactId>
+	<packaging>pom</packaging>
+
+	<name>RT Alpha - Server Parent</name>
+	<url>http://www.rtalpha.com</url>
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.rtalpha</groupId>
+		<artifactId>rtalpha-parent</artifactId>
+		<version>0.3.2-SNAPSHOT</version>
+		<relativePath>../rtalpha-parent/pom.xml</relativePath>
+	</parent>
+
+	<modules>
+		<module>config-server</module>
+		<module>service-registry</module>
+		<module>api-gateway</module>
+	</modules>
+
+	<properties>
+		<base.version>${project.version}</base.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>base-config</artifactId>
+				<version>${base.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>base-eureka</artifactId>
+				<version>${base.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+</project>

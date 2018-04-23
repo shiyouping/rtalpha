@@ -1,0 +1,11 @@
+logging:
+  config: @config-server.uri@/service-registry/default/@config-server-label@/service-registry-logback.xml
+
+eureka:
+  instance:
+    hostname: @service-registry.host@
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://@service-registry.host@:@service-registry.port@/eureka/      

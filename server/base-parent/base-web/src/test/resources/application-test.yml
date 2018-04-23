@@ -1,0 +1,110 @@
+# ----------------------------------------
+# Non-Spring-Handled Properties
+# ----------------------------------------
+base-web:
+  http:
+    task-executor:
+      core-pool-size: 50
+      max-pool-size: 200
+      queue-capacity: 500
+    multipart:
+      base-location: @project.build.directory@/multipart/base
+
+# ----------------------------------------
+# Spring-Handled Properties
+#
+# Check the following link to see detailed explanation
+# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+# ----------------------------------------
+
+# APPLICATION SETTINGS (SpringApplication)
+spring:
+  main:
+    banner-mode: log
+
+  # Spring Profiles
+  profiles:
+    active: test
+
+  # SPRING CACHE (CacheProperties)
+  cache:
+    type: infinispan
+    cache-names: default
+    infinispan:
+      config: classpath:infinispan-test.xml
+
+# MONGODB (MongoProperties)
+#  data:
+#    mongodb:
+#      host: localhost
+#      port: 27017
+#      database: local
+#      username: root
+#      password: root
+#      authentication-database: admin
+
+# EMBEDDED MONGODB (EmbeddedMongoProperties)
+#  mongodb:
+#    embedded:
+#      storage:
+#        database-dir: @project.build.directory@/mongo
+
+# SPRING MVC (WebMvcProperties)
+  mvc:
+    async:
+      request-timeout: 30000
+    throw-exception-if-no-handler-found: true
+
+  # HTTP encoding (HttpEncodingProperties)
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+    # MULTIPART (MultipartProperties)
+    multipart:
+      enabled: true
+      file-size-threshold: 20MB
+      location: @project.build.directory@/multipart
+      max-file-size: 5MB
+      max-request-size: 10MB
+
+  # SPRING RESOURCES HANDLING (ResourceProperties)
+  resources:
+    add-mappings: false
+
+  # SPRING SESSION (SessionProperties)
+  session:
+    store-type: mongo
+
+  jackson:
+    # JSON Serialization (SerializationFeature)
+    # SEE http://docs.spring.io/spring-boot/docs/current/reference/html/howto-spring-mvc.html#howto-customize-the-jackson-objectmapper
+    serialization:
+      WRITE_ENUMS_USING_TO_STRING: true
+    # JSON Deserialization (DeserializationFeature)
+    # SEE http://docs.spring.io/spring-boot/docs/current/reference/html/howto-spring-mvc.html#howto-customize-the-jackson-objectmapper
+    deserialization:
+      READ_ENUMS_USING_TO_STRING: true
+
+
+# EMBEDDED SERVER CONFIGURATION (ServerProperties)
+server:
+  tomcat:
+    basedir: @project.build.directory@/tomcat
+    accesslog:
+      directory: log
+      enabled: true
+  port: 9090
+  context-path: /base-web
+
+# SECURITY (SecurityProperties)
+security:
+  basic:
+    authorize-mode: role
+    enabled: true
+    path: /**
+  enable-csrf: false
+  user.role: USER
+  sessions: if_required

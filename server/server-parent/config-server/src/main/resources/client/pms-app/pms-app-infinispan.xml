@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Improve this file -->
+<infinispan xmlns="urn:infinispan:config:7.2">
+	<cache-container default-cache="test">
+		<transport />
+		<jmx duplicate-domains="true" />
+		<replicated-cache name="test" mode="SYNC" />
+	</cache-container>
+</infinispan>

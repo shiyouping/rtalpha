@@ -1,0 +1,12 @@
+server:
+  port: @ems-app.server.port@
+
+spring:
+  application:
+    name: ems-app
+    index: @ems-app.application.index@
+    
+  cloud:
+    config:
+      uri: @config-server.uri@
+      failFast: @config.fail-fast@

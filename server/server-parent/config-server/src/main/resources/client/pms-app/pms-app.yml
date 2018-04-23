@@ -1,0 +1,94 @@
+# ----------------------------------------
+# Non-Spring-Handled Properties
+# ----------------------------------------
+base-web:
+  http:
+    task-executor:
+      core-pool-size: 50
+      max-pool-size: 200
+      queue-capacity: 500
+    multipart:
+      base-location: @pms-app.http.multipart.base-location@
+      
+# ----------------------------------------
+# Spring-Handled Properties
+#
+# Check the following link to see detailed explanation
+# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+# ----------------------------------------
+
+logging:
+  config: @config-server.uri@/pms-app/default/@config-server-label@/pms-app-logback.xml
+
+# APPLICATION SETTINGS (SpringApplication)
+spring:
+  # Spring Profiles
+  profiles:
+    active: @pms-app.profiles.active@
+    
+  # SPRING CACHE (CacheProperties)
+  cache:
+    type: infinispan
+    cache-names: multipart,packageTour
+    infinispan:
+      config: @config-server.uri@/pms-app/default/@config-server-label@/pms-app-infinispan.xml
+
+  # SPRING MVC (WebMvcProperties)
+  mvc:
+    throw-exception-if-no-handler-found: true
+    async:
+      request-timeout: 300000
+      
+  # HTTP encoding (HttpEncodingProperties)
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+    # MULTIPART (MultipartProperties)
+    multipart:
+      enabled: true
+      file-size-threshold: 5MB
+      location: @pms-app.http.multipart.location@
+      max-file-size: 500KB
+      max-request-size: 5MB
+
+  # SPRING RESOURCES HANDLING (ResourceProperties)
+  resources:
+    add-mappings: false
+    
+  # SPRING SESSION (SessionProperties)
+  session:
+    store-type: mongo
+    
+  # MONGODB (MongoProperties)
+  data:
+    mongodb: 
+      host: @pms-app.mongodb.host@
+      port: @pms-app.mongodb.port@
+      database: @pms-app.mongodb.database@
+      username: @pms-app.mongodb.username@
+      password: @pms-app.mongodb.password@
+      authentication-database: @pms-app.mongodb.authentication-database@
+      
+# EMBEDDED SERVER CONFIGURATION (ServerProperties)
+server:
+  context-path: /rtalpha
+  tomcat:
+    basedir: @pms-app.tomcat.basedir@
+    accesslog:
+      directory: log
+      enabled: true
+
+# SECURITY (SecurityProperties)
+security:
+  ignored: /api/pms/v1/packageTour/find**
+  enable-csrf: false
+  sessions: if_required
+  basic:
+    authorize-mode: role
+    enabled: false
+    path: /api/pms/v1/**
+  user: 
+    role: AGENT
