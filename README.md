@@ -1,16 +1,16 @@
 ## **1. Introduction**
-This open source project intends to create an online travel platform where travel agencies sell their products and services, and customers compare prices of similar travel products and services from different agencies in one stop. This platform is quite like [Wing On Travel](https://www.wingontravel.com/) in Hong Kong, but is not exclusive to one or only a few companies, but open to any travel agencies to do their B2C business, which is like [Taobao](www.taobao.com) in China. I initiated this project in a hope that people in Hong Kong who like travelling will have one online portal where they can choose best travel products and services, seek travel advice, make friends with peers who love travelling too, etc. This project was originally hosted at Amazon Web Service, and just moved from there to GitHub for open source.
+This open source project intends to create an online travel platform where travel agencies sell their products and services, and customers compare prices of similar travel products and services from different agencies in one stop. This platform is quite like [Wing On Travel](https://www.wingontravel.com/) in Hong Kong, but is not exclusive to one or only a few companies, but open to any travel agencies to do their B2C business, which is like [Taobao](https://www.taobao.com/) in China. I initiated this project in a hope that people in Hong Kong who like travelling will have one online portal where they can choose best travel products and services, seek travel advice, make friends with peers who love travelling too, etc. This project was originally hosted at Amazon Web Service, and just moved from there to GitHub for open source.
 
 ## **2. Project Modules**
 This project has following three modules:
 
- **2.1. [Server Module](https://github.com/shiyouping/rtalpha/tree/master/server)**
+ **2.1. [Server Module](https://github.com/shiyouping/rtalpha/tree/master/server)** <br>
  A set of server applications, which are micro-service based, to provide back end services to web and mobile modules. Server module is already under development.
  
- **2.2. [Web Module](https://github.com/shiyouping/rtalpha/tree/master/web)**
+ **2.2. [Web Module](https://github.com/shiyouping/rtalpha/tree/master/web)** <br>
  A web application to provide an online portal to this travel platform. The development of this module hasn't started due to  resource shortage.
  
- **2.3. [Mobile Module](https://github.com/shiyouping/rtalpha/tree/master/mobile)**
+ **2.3. [Mobile Module](https://github.com/shiyouping/rtalpha/tree/master/mobile)** <br>
  Android and iOS apps for mobile users. The development of this module hasn't started due to resource shortage.
 
 ## **3. Contributors**
