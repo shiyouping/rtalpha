@@ -1,20 +1,41 @@
+
 ## **1. Overview**
-Originally server module is based on service-oriented architecture, I have been refactoring them to micro-service style since this March. For the time being, server module has the following services:
+Originally server module is based on service-oriented architecture, and I have been refactoring server applications to micro-service style since this March. Currently server module has covered the following micro-service components:
 
-1.1. Config Server<br>
-1.2. Service Registry<br>
-1.3. API Gateway<br>
-1.4. Product Management System<br>
-1.5. User Management System (in the progress of refactoring)<br>
-1.6. Email Management System<br> 
+- API gateway
+- Service discovery
+- Circuit breaker
+- Externalized configuration
+- Service Integration Contract Test
 
-New services such as Payment Management System, Order Management System, etc, will be added gradually. 
+Other components will be integrated gradually such as:
+
+- Log aggregation
+- Application metrics
+- Health check
+- Audit logging
+- Distributed tracing
+- Exception tracking
+
+
+For the time being, server module has the following services:
+
+- Config Server
+- Service Registry
+- API Gateway
+- Product Management System
+- User Management System
+- Email Management System
+
+New services such as Payment Management System, Order Management System, etc, will be added in the near future. 
 
 ## **2. Design**
 Please see documents of architecture and UML in [doc](https://github.com/shiyouping/rtalpha/tree/master/doc) directory to understand how server applications work and interact with each other.
 
 ## **3. In Progress**
-3.1. Integrate Spring Zuul to the server of API Gateway.<br>
-3.2. Implement OAuth 2.0 for different services.<br>
+- Integrate Spring Zuul to the server of API Gateway.
 
 ## **4. To Do**
+- Implement OAuth 2.0 for different services.
+- Integrate Swagger.
+- Refactor User Management System to new architecture.
