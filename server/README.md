@@ -4,15 +4,15 @@ Originally server module is based on service-oriented architecture, and I have b
 
 - API gateway
 - Service discovery
-- Circuit breaker
 - Externalized configuration
+- Circuit breaker
+- Health check API
 - Service Integration Contract Test
 
 Other components will be integrated gradually such as:
 
 - Log aggregation
 - Application metrics
-- Health check
 - Audit logging
 - Distributed tracing
 - Exception tracking
