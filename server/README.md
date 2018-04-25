@@ -30,7 +30,7 @@ For the time being, server module has the following services:
 New services such as Payment Management System, Order Management System, etc, will be added in the near future. 
 
 ## **2. Design**
-Please see documents of architecture and UML in [doc](https://github.com/shiyouping/rtalpha/tree/master/doc) directory to understand how server applications work and interact with each other.
+Please see documents of architecture and UML in [doc](https://github.com/shiyouping/rtalpha/tree/master/doc/architecture) directory to understand how server applications work and interact with each other.
 
 ## **3. In Progress**
 - Integrate Spring Zuul to the server of API Gateway.
