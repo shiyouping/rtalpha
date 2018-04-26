@@ -28,13 +28,19 @@ So far there are six server services:
 
 New services, e.g. Payment Management System, Order Management System, etc, will be added in the future. 
 
-## **2. Design**
-Please see documents of architecture in [doc](https://github.com/shiyouping/rtalpha/tree/master/doc/architecture) directory to understand how server applications work and interact with web and mobile applications.
+## **2. System Architecture**
+![System Architecture](https://github.com/shiyouping/rtalpha/blob/master/doc/architecture/server.png)
 
-## **3. In Progress**
+Please see the documents at [architecture](https://github.com/shiyouping/rtalpha/tree/master/doc/architecture) directory to understand how server applications work and interact with each other.
+
+## **3. Maven Hierarchy**
+![Maven Hierarchy](https://github.com/shiyouping/rtalpha/blob/master/doc/maven/inheritance.png)
+Please see the documents at [maven](https://github.com/shiyouping/rtalpha/tree/master/doc/maven) directory to understand the hierarchy of maven poms.
+
+## **4. In Progress**
 - Integrate Spring Zuul to the server of API Gateway.
 
-## **4. To Do**
+## **5. To Do**
 - Implement OAuth 2.0 for different services.
 - Integrate Swagger.
 - Refactor User Management System to new architecture.
