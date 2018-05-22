@@ -5,6 +5,7 @@ import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyListOf;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.List;
@@ -40,6 +41,7 @@ public class VerificationCodeServiceTest {
 		assertThat(all).isNotNull();
 		assertThat(all.size()).isEqualTo(1);
 		assertThat(all.get(0).getCode()).isEqualTo("code");
+		verify(repository).findAll();
 	}
 
 	@Test
@@ -47,6 +49,7 @@ public class VerificationCodeServiceTest {
 		VerificationCodeDto code = service.findLatestOneByEmail("email");
 		assertThat(code).isNotNull();
 		assertThat(code.getCode()).isEqualTo("code");
+		verify(repository).findByEmail(anyString(), any(Sort.class));
 	}
 
 	@Test
@@ -54,12 +57,14 @@ public class VerificationCodeServiceTest {
 		VerificationCodeDto code = service.findOne("id");
 		assertThat(code).isNotNull();
 		assertThat(code.getCode()).isEqualTo("code");
+		verify(repository).findOne(anyString());
 	}
 
 	@Test
 	public void shouldSave() {
 		VerificationCodeDto code = getDto();
 		service.save(code);
+		verify(repository).save(any(VerificationCode.class));
 	}
 
 	private static VerificationCode getDocument() {
