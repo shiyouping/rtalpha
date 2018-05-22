@@ -1,12 +1,12 @@
 package com.rtalpha.ems.app;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyListOf;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 import java.util.List;
 
@@ -30,6 +30,7 @@ public class VerificationCodeServiceTest {
 
 	@BeforeClass
 	public static void setup() {
+		// given
 		mapper = getMockMapper();
 		repository = getMockRepository();
 		service = new VerificationCodeServiceImpl(mapper, repository);
@@ -37,7 +38,10 @@ public class VerificationCodeServiceTest {
 
 	@Test
 	public void shouldFindAll() {
+		// when
 		List<VerificationCodeDto> all = service.findAll();
+		
+		// then
 		assertThat(all).isNotNull();
 		assertThat(all.size()).isEqualTo(1);
 		assertThat(all.get(0).getCode()).isEqualTo("code");
@@ -46,7 +50,10 @@ public class VerificationCodeServiceTest {
 
 	@Test
 	public void shouldFindLatestOneByEmail() {
+		// when
 		VerificationCodeDto code = service.findLatestOneByEmail("email");
+		
+		// then
 		assertThat(code).isNotNull();
 		assertThat(code.getCode()).isEqualTo("code");
 		verify(repository).findByEmail(anyString(), any(Sort.class));
@@ -54,7 +61,10 @@ public class VerificationCodeServiceTest {
 
 	@Test
 	public void shouldFindOne() {
+		// when
 		VerificationCodeDto code = service.findOne("id");
+		
+		// then
 		assertThat(code).isNotNull();
 		assertThat(code.getCode()).isEqualTo("code");
 		verify(repository).findOne(anyString());
@@ -62,8 +72,13 @@ public class VerificationCodeServiceTest {
 
 	@Test
 	public void shouldSave() {
+		// given
 		VerificationCodeDto code = getDto();
+		
+		// when
 		service.save(code);
+		
+		// then
 		verify(repository).save(any(VerificationCode.class));
 	}
 
@@ -89,17 +104,17 @@ public class VerificationCodeServiceTest {
 
 	private static VerificationCodeDtoDocMapper getMockMapper() {
 		VerificationCodeDtoDocMapper mapper = mock(VerificationCodeDtoDocMapper.class);
-		when(mapper.toDtoList(anyListOf(VerificationCode.class))).thenReturn(getDtoList());
-		when(mapper.toDto(any(VerificationCode.class))).thenReturn(getDto());
+		given(mapper.toDtoList(anyListOf(VerificationCode.class))).willReturn(getDtoList());
+		given(mapper.toDto(any(VerificationCode.class))).willReturn(getDto());
 		return mapper;
 	}
 
 	private static VerificationCodeRepository getMockRepository() {
 		VerificationCodeRepository repository = mock(VerificationCodeRepository.class);
-		when(repository.findOne(anyString())).thenReturn(getDocument());
-		when(repository.findAll()).thenReturn(getDocumentList());
-		when(repository.findByEmail(anyString(), any(Sort.class))).thenReturn(getDocumentList());
-		when(repository.save(any(VerificationCode.class))).thenReturn(getDocument());
+		given(repository.findOne(anyString())).willReturn(getDocument());
+		given(repository.findAll()).willReturn(getDocumentList());
+		given(repository.findByEmail(anyString(), any(Sort.class))).willReturn(getDocumentList());
+		given(repository.save(any(VerificationCode.class))).willReturn(getDocument());
 		return repository;
 	}
 }
