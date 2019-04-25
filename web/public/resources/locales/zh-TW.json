@@ -1,0 +1,15 @@
+{
+  "common": {
+    "confirm": "確定",
+    "accept": "接受",
+    "unsupportedBrowser": "您需要Chrome瀏覽器才能獲得RTAlpha網站的最佳體驗，請在此下載 <a href=https://www.google.com/chrome target='_blank'>Chrome</a>.",
+    "cookiePolicy": "RTAlpha網站使用必要的Cookie為您提供更加個性化的服務。如果您將瀏覽器設置為拒絕Cookie，您可能無法充分使用RTAlpha網站。有關詳情請參考隱私政策內的”Cookie”。"
+  },
+  "httpError": {
+    "general": "系統錯誤",
+    "client": "客戶端錯誤",
+    "server": "服務器端錯誤",
+    "network": "網路請求錯誤",
+    "redirection": "客戶端跳轉"
+  }
+}

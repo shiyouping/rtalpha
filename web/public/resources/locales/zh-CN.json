@@ -1,0 +1,15 @@
+{
+  "common": {
+    "confirm": "确定",
+    "accept": "接受",
+    "unsupportedBrowser": "您需要Chrome浏览器才能获得RTAlpha网站的最佳体验，请在此下载 <a href=https://www.google.com/chrome target='_blank'>Chrome</a>.",
+    "cookiePolicy": "RTAlpha网站使用必要的Cookie为您提供更加个性化的服务。如果您将浏览器设置为拒绝Cookie，您可能无法充分使用RTAlpha网站。有关详情请参考隐私政策内的”Cookie”。"
+  },
+  "httpError": {
+    "general": "系统错误",
+    "client": "客户端错误",
+    "server": "服务器端错误",
+    "network": "网络请求错误",
+    "redirection": "客户端跳转"
+  }
+}
