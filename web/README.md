@@ -2,11 +2,17 @@
 
 This is a react project. Before you start working on this project, please read this instruction first.
 
-## 1. File Structure
+## 1. System Architecture
+
+![System Architecture](https://github.com/shiyouping/rtalpha/blob/master/doc/architecture/web.png)
+
+Please see the documents at [architecture](https://github.com/shiyouping/rtalpha/tree/master/doc/architecture) directory to understand the system architecture.
+
+## 2. File Structure
 
 Please read [How to better organize your React applications](https://medium.com/@alexmngn/how-to-better-organize-your-react-applications-2fd3ea1920f1) to understand the file structure we use for this project.
 
-## 2. Use Absolute Paths
+## 3. Use Absolute Paths
 
 Absolute path import helps easier file nevigation and moving. All paths are configured to be relative to `src` in the root directory.
 
@@ -18,31 +24,31 @@ but do
 
 > import MyComponent from "components/my-component"
 
-## 3. React/JSX Style Guide
+## 4. React/JSX Style Guide
 
-### 3.1. Naming Convention
+### 4.1. Naming Convention
 
-#### 3.1.1. Use lowercased words and hyphen to join words for
+#### 4.1.1. Use lowercased words and hyphen to join words for
 
 - Directory: `image-asset`
 - File: `user-service.js`
 - URL: `www.rtalpha.com/user-centre`
 
-#### 3.1.2. Use lowerCamelCase notation for
+#### 4.1.2. Use lowerCamelCase notation for
 
 - URL query parameter: `www.rtalpha.com/user-centre?firstName=xxx`
 - JavaScript Variable: `let firstName`
 - Key of locale files: `errorHint: Error`
 
-#### 3.1.3. Use uppercased words and underscore to join words for
+#### 4.1.3. Use uppercased words and underscore to join words for
 
 - JavaScript constants: `THIS_IS_A_CONSTANT`
 
-### 3.2. File Extension
+### 4.2. File Extension
 
 Use `.js` for normal JavaScript files, and `.jsx` extension for React components, which gains additional support of plugins and editiors.
 
-## 4. Editor Plugins
+## 5. Editor Plugins
 
 Please install the following plugins for the editor you use.
 
@@ -51,7 +57,7 @@ Please install the following plugins for the editor you use.
 - [Prettier](https://prettier.io/docs/en/editors.html) for code formatting (`please enable auto save feature of your editor`)
 - [Styled Component Syntax Highlighting](https://www.styled-components.com/docs/tooling#syntax-highlighting) for syntax highlighting in Styled Components
 
-## 5. Visual Studio Code
+## 6. Visual Studio Code
 
 [Visual Studio Code](https://code.visualstudio.com/) is the preferred edtior. After install [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode), [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint#overview) and [Sublime Babel](https://marketplace.visualstudio.com/items?itemName=joshpeng.sublime-babel-vscode), please copy the following configurations to the project root (`DO NOT` commit them but keep them for yourself):
 
@@ -126,7 +132,7 @@ After the above configuration, you are encouraged to install the following plugi
 - [Visual Studio IntelliCode](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode)
 - [Jest](https://marketplace.visualstudio.com/items?itemName=Orta.vscode-jest) (for test only)
 
-## 6. Chrome
+## 7. Chrome
 
 We recommend to use Chrome with the following extensions for development:
 
@@ -134,7 +140,7 @@ We recommend to use Chrome with the following extensions for development:
 - [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)
 - [Immutable.js Object Formatter](https://chrome.google.com/webstore/detail/immutablejs-object-format/hgldghadipiblonfkkicmgcbbijnpeog)
 
-## 7. Production and Development Enviornments
+## 8. Production and Development Enviornments
 
 `.env.development` and `.env.production` are configuration files for development and production enviornments respectively. When doing development, you should configure the right settings for it, e.g. set the right URL of API server like
 
@@ -142,7 +148,7 @@ We recommend to use Chrome with the following extensions for development:
 
 in `.env.development`
 
-## 8. How to build a production release
+## 9. How to build a production release
 
 Before building a new version, the production configuration must be updated in `.env.production`. After that, you can start to build using the following command:
 
