@@ -1,6 +1,6 @@
 {
   "common": {
-    "confirm": "confirm",
+    "confirm": "Confirm",
     "accept": "Accept",
     "unsupportedBrowser": "You need a Chrome browser to get the best experience of RTAlpha Web. Please download it from <a href=https://www.google.com/chrome target='_blank'>Chrome</a>.",
     "cookiePolicy": "RTAlpha Web uses cookies necessary to provide you with more personalised service. If you set your browser to reject cookies you may not be able to make full use of the RTAlpha Web. For more details, please refer to \"Cookies\" in our privacy policy."
