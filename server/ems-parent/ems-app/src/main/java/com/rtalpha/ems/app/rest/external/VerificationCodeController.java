@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.rtalpha.base.kernel.constant.RequestPath;
 import com.rtalpha.base.web.exception.RestException;
 import com.rtalpha.base.web.rest.controller.external.ExternalController;
+import com.rtalpha.base.web.rest.response.external.ExternalSingleResponse;
 import com.rtalpha.base.web.rest.response.external.ExternalVoidResponse;
 import com.rtalpha.ems.app.service.api.VerificationEmailService;
 
@@ -38,7 +40,7 @@ public class VerificationCodeController implements ExternalController {
 		this.emailService = emailService;
 	}
 
-	@GetMapping(path = "/send")
+	@PostMapping(path = "/send")
 	public ExternalVoidResponse send(@RequestParam(value = "email") final String email) {
 		logger.info("Sending a verification code to {}", email);
 
@@ -54,4 +56,7 @@ public class VerificationCodeController implements ExternalController {
 			emailService.sendVerificationCode(email);
 		});
 	}
+	
+	@GetMapping(path = "/findLatestOneByEmail")
+	public ExternalSingleResponse<VerificationCodeMo>
 }

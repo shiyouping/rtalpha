@@ -1,9 +1,10 @@
-package com.rtalpha.ums.remote.dto;
+package com.rtalpha.ums.app.model;
 
-import org.joda.time.DateTime;
+import javax.validation.constraints.NotNull;
+
 import org.pojomatic.annotations.AutoProperty;
 
-import com.rtalpha.framework.core.dto.BaseDto;
+import com.rtalpha.base.web.model.PartialModel;
 
 /**
  * @author Ricky
@@ -11,13 +12,14 @@ import com.rtalpha.framework.core.dto.BaseDto;
  *
  */
 @AutoProperty
-public class VerificationCodeDto extends BaseDto {
+public class VerificationCodeUpdateModel extends PartialModel {
 
 	private static final long serialVersionUID = 1L;
 
+	@NotNull
 	private String email;
+	@NotNull
 	private String code;
-	private DateTime validBefore;
 
 	public String getEmail() {
 		return email;
@@ -33,13 +35,5 @@ public class VerificationCodeDto extends BaseDto {
 
 	public void setCode(String code) {
 		this.code = code;
-	}
-
-	public DateTime getValidBefore() {
-		return validBefore;
-	}
-
-	public void setValidBefore(DateTime validBefore) {
-		this.validBefore = validBefore;
 	}
 }

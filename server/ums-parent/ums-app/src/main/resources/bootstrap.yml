@@ -1,0 +1,12 @@
+server:
+  port: @ums-app.server.port@
+
+spring:
+  application:
+    name: ums-app
+    index: @ums-app.application.index@
+    
+  cloud:
+    config:
+      uri: @config-server.uri@
+      failFast: @config.fail-fast@

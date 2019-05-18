@@ -108,9 +108,9 @@
 				<activeByDefault>false</activeByDefault>
 			</activation>
 			<properties>
-				<ems-app.server.port>1000</ems-app.server.port>
+				<ems-app.server.port>9200</ems-app.server.port>
 				<ems-app.application.index>production</ems-app.application.index>
-				<config-server.uri>http://localhost:8888</config-server.uri>
+				<config-server.uri>http://localhost:8001</config-server.uri>
 				<config.fail-fast>true</config.fail-fast>
 			</properties>
 		</profile>

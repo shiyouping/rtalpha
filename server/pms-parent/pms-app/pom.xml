@@ -70,7 +70,7 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<pms-app.server.port>1000</pms-app.server.port>
+				<pms-app.server.port>9000</pms-app.server.port>
 				<pms-app.application.index>development</pms-app.application.index>
 				<config-server.uri>http://localhost:8001</config-server.uri>
 				<config.fail-fast>false</config.fail-fast>
@@ -83,9 +83,9 @@
 				<activeByDefault>false</activeByDefault>
 			</activation>
 			<properties>
-				<pms-app.server.port>1000</pms-app.server.port>
+				<pms-app.server.port>9000</pms-app.server.port>
 				<pms-app.application.index>production</pms-app.application.index>
-				<config-server.uri>http://localhost:8888</config-server.uri>
+				<config-server.uri>http://localhost:8001</config-server.uri>
 				<config.fail-fast>true</config.fail-fast>
 			</properties>
 		</profile>

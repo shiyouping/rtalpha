@@ -1,9 +1,9 @@
-package com.rtalpha.ums.remote.dto;
+package com.rtalpha.ums.kenel.dto;
 
 import org.joda.time.DateTime;
 import org.pojomatic.annotations.AutoProperty;
 
-import com.rtalpha.framework.core.dto.BaseDto;
+import com.rtalpha.base.kernel.dto.BaseDto;
 
 /**
  * @author Ricky

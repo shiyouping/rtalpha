@@ -40,7 +40,7 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<api-gateway.port>8011</api-gateway.port>
+				<api-gateway.port>8021</api-gateway.port>
 				<api-gateway.application.index>development</api-gateway.application.index>
 				<config-server.uri>http://localhost:8001</config-server.uri>
 				<config.fail-fast>false</config.fail-fast>
@@ -53,7 +53,7 @@
 				<activeByDefault>false</activeByDefault>
 			</activation>
 			<properties>
-				<api-gateway.port>8011</api-gateway.port>
+				<api-gateway.port>8021</api-gateway.port>
 				<api-gateway.application.index>production</api-gateway.application.index>
 				<config-server.uri>http://localhost:8001</config-server.uri>
 				<config.fail-fast>true</config.fail-fast>
