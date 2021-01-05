@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@ungap/url-search-params": "^0.1.1",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "bootstrap": "^4.1.3",
     "filepond": "^3.7.6",
     "filepond-plugin-file-validate-size": "^2.1.0",
