@@ -51,7 +51,7 @@
     "ts-pnp": "^1.0.1",
     "typescript": "^3.3.3333",
     "uuid": "^3.3.2",
-    "validator": "^10.8.0",
+    "validator": "^13.7.0",
     "webstomp-client": "^1.2.4"
   },
   "devDependencies": {
